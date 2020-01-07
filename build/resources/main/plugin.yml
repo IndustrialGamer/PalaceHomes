@@ -1,0 +1,18 @@
+api-version: '1.14'
+
+name: PalaceHomes
+
+main: br.com.gamespalace.PalaceHomes
+
+version: 1.0-SNAPSHOT
+
+author: enzozbestetti
+
+commands:
+  sethome:
+    description: Adiciona uma nova casa à lista do jogador
+  home:
+    description: Teleporta o jogar para a casa selecionada / Abre a GUI de casas
+  delhome:
+    description: Remove uma casa da lista do jogador
+
