@@ -1,5 +1,6 @@
 package br.com.gamespalace.commands;
 
+import br.com.gamespalace.utils.InvalidHomeException;
 import br.com.gamespalace.PalaceHomes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,9 +37,15 @@ boolean exc = false;
                 try {
 
                     String name = args[0];
-                    String l = (String) (plugin.getConfig().get(p.getName() + "Homes." + name));
+                    String l = (String) plugin.getConfig().get(p.getName() + " _Homes." + name);
                     if (l == null) {
-                       // throw new NullPointerException();
+
+                       throw new InvalidHomeException();
+
+                    } else {
+
+                     l = l;
+
                     }
 
 
@@ -78,7 +85,7 @@ boolean exc = false;
 
 
 
-                } catch (Exception e) {
+                } catch (InvalidHomeException e) {
 
                     p.sendMessage(ChatColor.DARK_RED + "Casas> " + ChatColor.RED + "A casa " + ChatColor.DARK_PURPLE + args[0] + ChatColor.RED + " nao existe ou ja foi deletada!");
                     return true;

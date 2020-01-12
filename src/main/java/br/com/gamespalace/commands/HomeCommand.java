@@ -1,6 +1,6 @@
 package br.com.gamespalace.commands;
 
-import br.com.gamespalace.GUI;
+import br.com.gamespalace.utils.GUI;
 import br.com.gamespalace.PalaceHomes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
