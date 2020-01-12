@@ -8,9 +8,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SethomeCommand implements CommandExecutor {
 
     PalaceHomes plugin;
@@ -47,13 +44,7 @@ int homes;
                     plugin.homes = 1;
                 }
 
-/*             switch ((String) plugin.getConfig().get(p.getName())) {
-                 case "": plugin.homes = 0; break;
-                 default: plugin.homes = (int) plugin.getConfig().get(p.getName());
-
-             }
-
-                    plugin.homes++; */
+                   // plugin.homes++;
 
                     plugin.getConfig().set(p.getName() + "_" + plugin.homes , PalaceHomes.homeName);
                     plugin.saveConfig();

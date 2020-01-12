@@ -15,4 +15,6 @@ commands:
     description: Teleporta o jogar para a casa selecionada / Abre a GUI de casas
   delhome:
     description: Remove uma casa da lista do jogador
+  DELETEALLHOMES:
+    description: DO NOT USE! TESTING COMMAND ONLY
 

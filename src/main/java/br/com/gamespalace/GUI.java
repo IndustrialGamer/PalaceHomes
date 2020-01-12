@@ -23,7 +23,7 @@ public class GUI {
 
     Inventory gui = Bukkit.createInventory(p, 54, ChatColor.DARK_BLUE + "Homes");
 
-        int homes = PalaceHomes.homes;
+        int homes = PalaceHomes.homes ;
 
 
         ItemStack close = new ItemStack(Material.FEATHER);
@@ -52,7 +52,16 @@ public class GUI {
            ItemStack item = new ItemStack(Material.OAK_PLANKS);
            ItemMeta meta = item.getItemMeta();
 
-           int position = i + 1;
+          int position = i + 1;
+         /*  int deletedCount;
+           if (plugin.getConfig().get(p.getName() + "_deleted") == null) {
+               position = i + 1;
+
+           } else {
+               deletedCount = (int) plugin.getConfig().get(p.getName() + "_deleted");
+               position = i + 1 + deletedCount;
+           } */
+
            String homeName = "";
 
 
@@ -66,8 +75,8 @@ public class GUI {
            }
 
 
-           //meta.setDisplayName(ChatColor.GREEN + homeName);
-         //  meta.setDisplayName(ChatColor.GREEN + String.valueOf(i));
+           meta.setDisplayName(ChatColor.GREEN + homeName);
+         // meta.setDisplayName(ChatColor.GREEN + String.valueOf(i));
 
            item.setItemMeta(meta);
             gui.setItem(i, item);

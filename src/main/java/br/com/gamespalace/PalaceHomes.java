@@ -1,5 +1,6 @@
 package br.com.gamespalace;
 
+import br.com.gamespalace.commands.DeleteAllHomesCommand;
 import br.com.gamespalace.commands.DeleteHomeCommand;
 import br.com.gamespalace.commands.HomeCommand;
 import br.com.gamespalace.commands.SethomeCommand;
@@ -10,6 +11,7 @@ public class PalaceHomes extends JavaPlugin {
 
     public static int homes = 0;
     public static String homeName = "";
+    public static int ID;
 
     @Override
     public void onEnable() {
@@ -17,6 +19,7 @@ public class PalaceHomes extends JavaPlugin {
         this.getCommand("home").setExecutor(new HomeCommand(this));
         this.getCommand("sethome").setExecutor(new SethomeCommand(this));
         this.getCommand("delhome").setExecutor(new DeleteHomeCommand(this));
+        this.getCommand("DELETEALLHOMES").setExecutor(new DeleteAllHomesCommand(this));
         registerConfig();
 
         getServer().getPluginManager().registerEvents(new PalaceHomesEvents(this), this);

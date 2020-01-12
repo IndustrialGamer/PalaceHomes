@@ -13,13 +13,15 @@ import org.bukkit.entity.Player;
 public class HomeCommand implements CommandExecutor {
 
     PalaceHomes plugin;
+    GUI gui;
     public HomeCommand (PalaceHomes plugin) {
 
         this.plugin = plugin;
+        this.gui = new GUI(plugin);
 
     }
 
-GUI gui = new GUI(plugin);
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

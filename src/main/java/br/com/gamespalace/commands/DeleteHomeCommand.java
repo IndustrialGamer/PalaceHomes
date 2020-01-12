@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 public class DeleteHomeCommand implements CommandExecutor {
 
     PalaceHomes plugin;
+
+
     public DeleteHomeCommand (PalaceHomes plugin) {
 
         this.plugin = plugin;
@@ -22,6 +24,7 @@ boolean exc = false;
     public boolean onCommand(CommandSender sender, Command command,  String label, String[] args) {
 
         Player p = (Player) sender;
+      int in = Integer.parseInt(plugin.getConfig().get(p.getName()).toString());
 
         if (command.getName().equalsIgnoreCase("delhome")) {
 
@@ -34,22 +37,46 @@ boolean exc = false;
 
                     String name = args[0];
                     String l = (String) (plugin.getConfig().get(p.getName() + "Homes." + name));
-               //     p.setCompassTarget(l);
+                    if (l == null) {
+                       // throw new NullPointerException();
+                    }
+
 
                     plugin.getConfig().set(p.getName() + " _Homes." + name, null);
                     plugin.saveConfig();
 
-                    plugin.homes = (int) plugin.getConfig().get(p.getName()) - 1;
-                    if (plugin.homes <= 0) {
-                        plugin.homes = 0;
+                    in += -1;
+                    plugin.homes += -1;
+
+                 if (in <= 0) {
+
+                        in = 0;
+
+                    } else {
+
+                        in = in;
                     }
 
-                    plugin.getConfig().set(p.getName(), plugin.homes);
+                    plugin.getConfig().set(p.getName(), in);
                     plugin.saveConfig();
+
                     p.sendMessage(ChatColor.BLUE + "Casas> " + ChatColor.GREEN + "A casa " + ChatColor.DARK_PURPLE + name + ChatColor.GREEN + " foi deletada com sucesso!");
 
-                    plugin.getConfig().set(p.getName() + "_" + plugin.homes, null);
+                    int homeCount = (int) plugin.getConfig().get(p.getName());
+
+                    plugin.getConfig().set(p.getName() + "_" + (in), null);
                     plugin.saveConfig();
+
+                    for (int i =0; i < homeCount ; i++) {
+
+                        String s = (String) plugin.getConfig().get(p.getName() + "_" + (in + 1));
+
+                        plugin.getConfig().set(p.getName() + "_" + in, s);
+                        plugin.saveConfig();
+
+                    }
+
+
 
                 } catch (Exception e) {
 
